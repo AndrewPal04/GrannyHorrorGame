@@ -1,4 +1,5 @@
 import pygame
+import math
 
 
 class Text():
@@ -51,3 +52,15 @@ class Player(pygame.sprite.Sprite):
             self.rect.x+=self.speed
         if keystate[pygame.K_a]:
             self.rect.x-=self.speed
+    def chase(self,target):
+        distance=math.hypot(target.rect.x-self.rect.x, target.rect.y-self.rect.y)
+        if distance < 200:
+            if target.rect.x>self.rect.x:
+                self.rect.x+=1.5
+            if target.rect.x<self.rect.x:
+                self.rect.x-=1.5
+            if target.rect.y>self.rect.y:
+                self.rect.y+=1.5
+            if target.rect.y<self.rect.y:
+                self.rect.y-=1.5
+        #IF she isn't close to us, will she be still or move randomly?
