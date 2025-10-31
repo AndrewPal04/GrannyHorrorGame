@@ -1,7 +1,6 @@
 import pygame
 import math
-
-
+import random
 class Text():
     def __init__(self,surface, text, size, color, x, y):
         font_name = pygame.font.match_font('arial')
@@ -52,6 +51,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.x+=self.speed
         if keystate[pygame.K_a]:
             self.rect.x-=self.speed
+
     def chase(self,target):
         distance=math.hypot(target.rect.x-self.rect.x, target.rect.y-self.rect.y)
         if distance < 200:
@@ -63,4 +63,14 @@ class Player(pygame.sprite.Sprite):
                 self.rect.y+=1.5
             if target.rect.y<self.rect.y:
                 self.rect.y-=1.5
-        #IF she isn't close to us, will she be still or move randomly?
+        else:
+            modnar=random.randint(1,4)
+            if modnar == 1:
+                self.rect.x+=1.5
+            elif modnar == 2:
+                self.rect.x-=1.5
+            elif modnar == 3:
+                self.rect.y+=1.5
+            elif modnar == 4:
+                self.rect.y-=1.5
+                
