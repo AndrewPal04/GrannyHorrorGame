@@ -95,6 +95,8 @@ def firstFloor():
             dark.rect.x=jack.rect.x-1400
             dark.rect.y=jack.rect.y-900
         jack.update()
+        #if you add in pepperspray, this would become a if statement
+        #(She only moves if shes not sprayed)
         granny.chase(jack)
         #get rid of them later
 
@@ -221,3 +223,5 @@ def secondFloor():
 firstFloor()
 secondFloor()
 
+#Homework
+#Slideshow, and key logic
